@@ -5,7 +5,7 @@ import numpy as np
 class CreateMethod():
     def sift_bf_crosscheck(**kwargs):
         detector = cv2.xfeatures2d.SIFT_create()
-        matcher = cv2.BFMatcher(cv2.NORM_L2, crossCheck=False)
+        matcher = cv2.BFMatcher(cv2.NORM_L2, crossCheck=True)
 
         def run(img1, img2):
             kp1, des1 = detector.detectAndCompute(img1, None)
@@ -19,7 +19,7 @@ class CreateMethod():
     def sift_bf_ratiotest(**kwargs):
         kwargs['ratio'] = kwargs.get('ratio', 0.7)
         detector = cv2.xfeatures2d.SIFT_create()
-        matcher = cv2.BFMatcher(cv2.NORM_L2)
+        matcher = cv2.BFMatcher(cv2.NORM_L2, crossCheck=False)
 
         def run(img1, img2):
             kp1, des1 = detector.detectAndCompute(img1, None)
@@ -34,7 +34,7 @@ class CreateMethod():
     def surf_bf_crosscheck(**kwargs):
         kwargs['extended'] = kwargs.get('extended', False)
         detector = cv2.xfeatures2d.SURF_create(extended=True)
-        matcher = cv2.BFMatcher(cv2.NORM_L2, crossCheck=False)
+        matcher = cv2.BFMatcher(cv2.NORM_L2, crossCheck=True)
 
         def run(img1, img2):
             kp1, des1 = detector.detectAndCompute(img1, None)
@@ -49,7 +49,7 @@ class CreateMethod():
         kwargs['extended'] = kwargs.get('extended', False)
         kwargs['ratio'] = kwargs.get('ratio', 0.7)
         detector = cv2.xfeatures2d.SURF_create(extended=True)
-        matcher = cv2.BFMatcher(cv2.NORM_L2)
+        matcher = cv2.BFMatcher(cv2.NORM_L2, crossCheck=False)
 
         def run(img1, img2):
             kp1, des1 = detector.detectAndCompute(img1, None)
@@ -71,7 +71,7 @@ class CreateMethod():
 
     def orb_bf_crosscheck(**kwargs):
         detector = cv2.ORB_create()
-        matcher = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=False)
+        matcher = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
 
         def run(img1, img2):
             kp1, des1 = detector.detectAndCompute(img1, None)
@@ -85,7 +85,7 @@ class CreateMethod():
     def orb_bf_ratiotest(**kwargs):
         kwargs['ratio'] = kwargs.get('ratio', 0.7)
         detector = cv2.ORB_create()
-        matcher = cv2.BFMatcher(cv2.NORM_HAMMING)
+        matcher = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=False)
 
         def run(img1, img2):
             kp1, des1 = detector.detectAndCompute(img1, None)
