@@ -107,7 +107,6 @@ def drawMatches(method_name, img1, img2, top=50, homocheck=False, **kwargs):
         dst_pts = np.float32([kp2[m.trainIdx].pt for m in matches]).reshape(-1, 1, 2)
         M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC, 5.0)
         matches = [m for m, v in zip(matches, mask.ravel()) if v]
-        cv2.imwrite(args.patho + 'tmp.png', cv2.warpPerspective(img1, M, (img1.shape[0] * 2, img1.shape[1] * 2)))
 
     match_img = cv2.drawMatches(
         img1, kp1, img2, kp2, matches[:top],
