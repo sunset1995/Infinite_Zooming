@@ -2,14 +2,6 @@
 Homework4 of NTHU CVFX. Feature matching for moving forward and infinite zooming effect.
 
 
-- V (5%)Take a sequence of moving-forward images in NTHU campus.
-- V (5%)Show feature extraction and matching results between two images
-- (20%)implement different feature extrators, e.g. SIFT, SURF, and compare the results
-    - Make summary
-- (10%)Perform image alignment and generate infinite zooming effect
-- (10%)exploit creativity to add some image processing to enhance effect. You can use photoshop to do some effects, such as bluring or coloring.
-
-
 ## Part 1: Feature Detector Comparison
 
 ### 1.1 Benchmark preparation
@@ -83,7 +75,7 @@ In many applications like panoram stitching and pose estimation, the matched key
 
 ![](imgs/ex_pano_stitch.jpg)
 
-However, if the two images are captured with different camera translation, only features on the same plane are guaranteed to match. In below example, most of the matched features are located on the farest door. So after the homography estimation, the matched features closer to the camera are considered as mis-match. Some of them are really incorrect match (indicated as red) but it also remove some original correct match (indicated as green).
+However, if the two images are captured with different camera translation, only features on the same plane are guaranteed to match. In below example, most of the matched features are located on the farthest door. So after the homography estimation, the matched features closer to the camera are considered as mis-match. Some of them are really incorrect match (indicated as red) but it also remove some original correct match (indicated as green).
 
 | Before | After |
 | :---------------------: | :--------------------: |
@@ -91,5 +83,12 @@ However, if the two images are captured with different camera translation, only 
 
 
 ## Part 2: Moving Forward Effect from a Sequence of Images
+To generate the moving forward effect from order images, we pick the first image as background and add image one by one as the camera move forward. The new image is scaled smaller and aligned with the previous one such that prominent feature are aligned. Below figure shows the result aligned by the estimated homography between two image:
+
+| ![](imgs/output_move_forward/IMG_0314_IMG_0313_match.png) | ![](imgs/output_move_forward/IMG_0315_IMG_0314_match.png) | ![](imgs/output_move_forward/IMG_0316_IMG_0315_match.png) |
+| :-: | :-: | :-: |
+| ![](imgs/output_move_forward/IMG_0314_IMG_0313_merge.png) | ![](imgs/output_move_forward/IMG_0315_IMG_0314_merge.png) | ![](imgs/output_move_forward/IMG_0316_IMG_0315_merge.png) |
+
+Finally, the exposure of each image is tuned respectively such that the result look more pleasing.
+
 ![](imgs/move_forward.gif)
-先放上最遠的圖片當作底圖，疊上向前走後的圖片後，調整圖片的透明度以方便對齊，之後便手動對齊照片中的物件(垃圾桶、天花板紋路等)，再疊完所有圖片後再同時調整所有圖層的縮放便可達到這個效果。
