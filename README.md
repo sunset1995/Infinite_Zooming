@@ -25,7 +25,7 @@ Among the 4 types, the source image are all the same but the target images for f
 ### 1.2 Comparing different detectors and matching algorithms setting
 The source codes generating all the below results is `feature_matcher.py`. We draw 50 matched features with the lowest distance for easier comparing the results by human eyes.
 
-We compare between 4 feature descripters:
+We compare between 4 feature descriptors:
 - SIFT
 - SURF
 - SURF extended (128 dimensions instead of 64)
@@ -37,7 +37,7 @@ and 2 matching algorithm settings:
 - Brute Force Matching w/ Ratio Test
 	- for each descriptor, find two closest neighbors.
 	- a descriptor is a match for its closest neighbor if the ratio of the distance of the closest neighbor to the distance of the second-closest neighbor is lower than a threshold.
-	- we set the ratio threshold to 0.7.
+	- we set the ratio threshold to 0.7
 
 #### Case: Moving forward
 | | Brute Force Matching w/ Cross Check | Brute Force Matching w/ Ratio Test |
