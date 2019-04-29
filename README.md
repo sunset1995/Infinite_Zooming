@@ -25,6 +25,20 @@ Among the 4 types, the source image are all the same but the target images for f
 ### 1.2 Comparing different detectors and matching algorithms setting
 The source codes generating all the below results is `feature_matcher.py`. We draw 50 matched features with the lowest distance for easier comparing the results by human eyes.
 
+We compare between 4 feature descripters:
+- SIFT
+- SURF
+- SURF extended (128 dimensions instead of 64)
+- ORB
+
+and 2 matching algorithm settings:
+- Brute Force Matching w/ Cross Check
+	- only accept those matches with value (i,j) such that i-th descriptor in set A has j-th descriptor in set B as the best match and vice-versa.
+- Brute Force Matching w/ Ratio Test
+	- for each descriptor, find two closest neighbors.
+	- a descriptor is a match for its closest neighbor if the ratio of the distance of the closest neighbor to the distance of the second-closest neighbor is lower than a threshold.
+	- we set the ratio threshold to 0.7.
+
 #### Case: Moving forward
 | | Brute Force Matching w/ Cross Check | Brute Force Matching w/ Ratio Test |
 | :--: | :------------------: | :-----------------: |
@@ -56,6 +70,11 @@ The source codes generating all the below results is `feature_matcher.py`. We dr
 | SURF | ![](imgs/output_compare/yaw_surf_bf_crosscheck.jpg) | ![](imgs/output_compare/yaw_surf_bf_ratiotest.jpg) |
 | SURF extended | ![](imgs/output_compare/yaw_surfext_bf_crosscheck.jpg) | ![](imgs/output_compare/yaw_surfext_bf_ratiotest.jpg) |
 | ORB | ![](imgs/output_compare/yaw_orb_bf_crosscheck.jpg) | ![](imgs/output_compare/yaw_orb_bf_ratiotest.jpg) |
+
+#### Discussion
+- ORB descripter works the best under all experiment settings.
+- The results of SURF (64 dim) and SURF extended (128 dim) are similar.
+- Generally specking, the effectiveness of the 4 descriptors under our experiment is: ORB > SIFT > SURF = SURF extended.
 
 
 ### 1.3 The effect after homography estimation
