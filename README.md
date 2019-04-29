@@ -72,9 +72,10 @@ and 2 matching algorithm settings:
 | ORB | ![](imgs/output_compare/yaw_orb_bf_crosscheck.jpg) | ![](imgs/output_compare/yaw_orb_bf_ratiotest.jpg) |
 
 #### Discussion
+- In general, ratio test works better than cross check in our experiment.
 - ORB descripter works the best under all experiment settings.
 - The results of SURF (64 dim) and SURF extended (128 dim) are similar.
-- Generally specking, the effectiveness of the 4 descriptors under our experiment is: ORB > SIFT > SURF = SURF extended.
+- The effectiveness of the 4 descriptors under our experiment is: ORB > SIFT > SURF = SURF extended.
 
 
 ### 1.3 The effect after homography estimation
