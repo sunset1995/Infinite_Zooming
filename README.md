@@ -92,3 +92,4 @@ However, if the two images are captured with different camera translation, only 
 
 ## Part 2: Moving Forward Effect from a Sequence of Images
 ![](imgs/move_forward.gif)
+先放上最遠的圖片當作底圖，疊上向前走後的圖片後，調整圖片的透明度以方便對齊，之後便手動對齊照片中的物件(垃圾桶、天花板紋路等)，再疊完所有圖片後再同時調整所有圖層的縮放便可達到這個效果。
