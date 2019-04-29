@@ -68,3 +68,7 @@ However, if the two images are captured with different camera translation, only 
 | Before | After |
 | :---------------------: | :--------------------: |
 | ![](imgs/output_compare_homo/forward_before_homo.jpg) | ![](imgs/output_compare_homo/forward_after_homo.jpg) |
+
+
+## Part 2: Moving Forward Effect from a Sequence of Images
+![](imgs/move_forward.gif)
